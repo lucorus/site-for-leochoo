@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Информация</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+    </div>
+<a class="navbar-brand" href="{% url 'user_logout' %}"><font color="#E1857B">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left"
+             viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+            <path fill-rule="evenodd"
+                  d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+        </svg>
+        Выйти</font><span
+            class="sr-only"></span></a>
+</nav>
+<div class="container">
+
+    <div>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    {% if request.user.avatar %}
+                    <a href="#"><img src="{{ request.user.avatar }}" height="150px"
+                                                               width="150px"></a>
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ request.user }}</h3>
+                        <h4 class="card-text">{{ request.user.description }}</h4>
+                        <p class="card-text"><small class="text-muted">  </small></p>
+                        <!--{% if request.user.avatar %}
+
+                        {% else %}-->
+                        <div align="right">
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown"
+                                   aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor"
+                                         class="bi bi-info"
+                                         viewBox="0 0 16 16">
+                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                    </svg>
+                                </a>
+
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Не хотите сменить ник?</a>
+                                    <a href="#" class="dropdown-item">Не хотите изменить аватар?</a>
+                                    <a href="#" class="dropdown-item">Не хотите изменить описание?</a>
+                                    <!--{% if request.user.avatar %}
+
+                                    {% else %}
+
+                                    {% endif %}
+                                    {% if request.user.description %}
+
+                                    {% else %}
+
+                                    {% endif %}-->
+                                </div>
+                            </div>
+                        <!--{% endif %}-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    {% for item in model %}
+
+    {% if item.author_id == item.answer_by_id %}
+
+    {% else %}
+    <div class="card">
+        <div class="card-header">
+            {{ item.author }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.text }}</h5>
+            <p class="card-text">{{ item.created_add }}</p>
+            <a href="create_comment" class="btn btn-secondary" >Ответить</a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
