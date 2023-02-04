@@ -34,7 +34,7 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=40, unique=False, default='', verbose_name='Имя пользователя')
     avatar = models.ImageField(upload_to='photos',  verbose_name='Аватар')
     description = models.CharField(verbose_name='Статус', blank=True, max_length=120)
-    information = models.CharField(max_length=200, verbose_name='Информация о пользователе', blank=True)
+    information = models.CharField(max_length=200, verbose_name='Информация о пользователе', blank=True, default='')
 
     def get_absolute_url(self):
         return reverse_lazy('username', kwargs={"username_id": self.pk})
