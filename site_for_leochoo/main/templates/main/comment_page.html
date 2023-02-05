@@ -256,8 +256,10 @@
 
 
         <div class="card-body">
+            <div style="-webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+<p class="card-text">{{ item.text }}</p>
+            </div>
 
-            <p class="card-text">{{ item.text }}</p>
 
             <p class="card-title" align="right">{{ item.created_add }}</p>
 
@@ -303,8 +305,10 @@
             {% endif %}
         </h5>
         <div class="card-body">
-
-            <p class="card-text">{{ item.text }}</p>
+            <div style="-webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+<p class="card-text">{{ item.text }}</p>
+            </div>
+            <!--<p class="card-text">{{ item.text }}</p>-->
             {% if item.author != item.answer_by %}
             <p class="card-title" align="right">{{ item.created_add }}</p>
             {% endif %}

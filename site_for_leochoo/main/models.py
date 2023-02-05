@@ -32,7 +32,7 @@ class Question(models.Model):
 
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=40, unique=False, default='', verbose_name='Имя пользователя')
-    avatar = models.ImageField(upload_to='photos',  verbose_name='Аватар')
+    avatar = models.ImageField(upload_to='photos',  verbose_name='Аватар', blank=True)
     description = models.CharField(verbose_name='Статус', blank=True, max_length=120)
     information = models.CharField(max_length=200, verbose_name='Информация о пользователе', blank=True, default='')
 

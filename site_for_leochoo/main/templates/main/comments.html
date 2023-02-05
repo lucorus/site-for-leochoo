@@ -181,8 +181,10 @@
 
 
         <div class="card-body">
-
-            <p class="card-text">{{ item.text }}</p>
+            <div style="-webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+<p class="card-text">{{ item.text }}</p>
+            </div>
+            <!--<p class="card-text">{{ item.text }}</p>-->
 
             <p style="text-align:left;">
                 {% if item.quantity_comments %}
@@ -217,8 +219,10 @@
 
 
         <div class="card-body">
-
-            <p class="card-text">{{ item.text }}</p>
+            <div style="-webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+<p class="card-text">{{ item.text }}</p>
+            </div>
+            <!--<p class="card-text">{{ item.text }}</p>-->
 
             <p style="text-align:left;">
                 <!--{% if item.quantity_comments %}
